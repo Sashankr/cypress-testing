@@ -6,7 +6,7 @@ describe('Empty test',()=>{
         cy.visit('https://codedamn.com/')
     })
 
-    it('Check sign in page', () =>{
+    it.only('Check sign in page error', {scrollBehavior : false} ,  () =>{
         cy.viewport("macbook-13")
         cy.visit('https://codedamn.com/')
         
@@ -16,18 +16,11 @@ describe('Empty test',()=>{
             cy.log('current url',value)
         })
         cy.url().should('include','/login');
-        
-        // //2. Checking forgot password url
-        // cy.get('a').contains('Forgot your password?').should('exist').click();
-        // // cy.url().should('include','/password-reset');
-        // // cy.go('back');
+        cy.contains('Unable to authorize').should('not.exist');
 
-
-        //3. Checking register page url
-
-        cy.contains('Create one').should('exist').click();
-        cy.url().should('include','/register');
-        cy.go('back');
-
+        cy.get('[data-testid = username]').type('admin')
+        cy.get('[data-testid = password]').type('admin')
+        cy.get('[data-testid=login]').should('exist').click()
+        cy.contains('Unable to authorize').should('exist');
     })
 })
