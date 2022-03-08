@@ -12,6 +12,9 @@ describe('Empty test',()=>{
         
         // 1.Visit Sign in page
         cy.contains('Sign in').should('exist').click();
+        cy.url().then(value => {
+            cy.log('current url',value)
+        })
         cy.url().should('include','/login');
         
         // //2. Checking forgot password url
