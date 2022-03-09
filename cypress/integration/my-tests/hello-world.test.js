@@ -22,7 +22,7 @@ describe('Basic tests',()=>{
             cy.log('current url',value)
         })
         cy.url().should('include','/login');
-        cy.contains('Unable to authorize').should('not.exist');
+        cy.contains('Unable to authorize', {timeout : 6 * 1000}).should('not.exist');
 
         cy.get('[data-testid = username]').type('admin')
         cy.get('[data-testid = password]').type('admin')
