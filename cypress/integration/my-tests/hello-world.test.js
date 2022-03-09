@@ -26,9 +26,9 @@ describe('Basic tests',()=>{
 
         cy.get('[data-testid = username]').type('admin')
         cy.get('[data-testid = password]').type('admin')
-        cy.type('{enter}')
-        // cy.get('[data-testid=login]').should('exist').click()
-        cy.contains('Unable to authorize').should('exist');
+        // cy.type('{enter}')
+        // cy.contains('Unable to authorize').should('exist');
+        cy.get('[data-testid=google-oauth-btn]',{timeout : 5 * 1000}).should('exist').rightclick()
     })
 
     it.only('Check sign in page error', {scrollBehavior : false} ,  () =>{
@@ -45,7 +45,8 @@ describe('Basic tests',()=>{
 
         cy.get('[data-testid = username]').type('admin')
         cy.get('[data-testid = password]').type('admin')
-        cy.get('[data-testid=login]').should('exist').click()
-        cy.contains('Unable to authorize').should('exist');
+        cy.get('[data-testid=login]').should('exist').rightclick()
+        // cy.contains('Unable to authorize').should('exist');
+        cy.get('body').rightclick()
     })
 })
