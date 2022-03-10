@@ -2,6 +2,9 @@
 
 describe('Basic tests',()=>{
 
+    before(()=>{
+        cy.log('before ran')
+    })
 
     beforeEach(()=>{
         cy.viewport("macbook-13")
@@ -48,5 +51,13 @@ describe('Basic tests',()=>{
         cy.get('[data-testid=login]').should('exist').rightclick()
         // cy.contains('Unable to authorize').should('exist');
         cy.get('body').rightclick()
+    })
+
+    afterEach(()=>{
+        cy.log('After each ran')
+    })
+
+    after(()=>{
+        cy.log('Final run')
     })
 })
