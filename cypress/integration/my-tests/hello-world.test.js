@@ -46,9 +46,9 @@ describe('Basic tests',()=>{
         cy.url().should('include','/login');
         cy.contains('Unable to authorize').should('not.exist');
 
-        cy.get('[data-testid = username]').type('admin')
-        cy.get('[data-testid = password]').type('admin')
-        cy.get('[data-testid=login]').should('exist').rightclick()
+        cy.getBySel('username').type('admin')
+        cy.getBySel('password').type('admin')
+        cy.getBySel('login').should('exist').rightclick()
         // cy.contains('Unable to authorize').should('exist');
         cy.get('body').rightclick()
     })

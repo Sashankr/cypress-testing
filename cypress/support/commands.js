@@ -10,7 +10,9 @@
 //
 //
 // -- This is a parent command --
-// Cypress.Commands.add('login', (email, password) => { ... })
+Cypress.Commands.add('getBySel', (selector, ...args) => {
+   return cy.get(`[data-testid="${selector}"]`,...args)
+})
 //
 //
 // -- This is a child command --
